@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from hashlib import sha256
 from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = "your_secret_key"  # Needed for flashing messages
 
 # List to store blockchain
 blockchain = []
@@ -47,6 +48,18 @@ def delete_record(uid):
     global blockchain
     blockchain = [record for record in blockchain if record.uid != uid]
     return redirect(url_for('view_blockchain'))
+
+# Route to search for a record by UID
+@app.route('/search_record', methods=['POST'])
+def search_record():
+    uid = request.form['search_uid']
+    # Search for the record in the blockchain
+    for record in blockchain:
+        if record.uid == uid:
+            return render_template('index.html', record=record)
+    # If no record is found, flash a message
+    flash("No record found with UID: " + uid)
+    return redirect(url_for('index'))
 
 # Route to view blockchain
 @app.route('/view_blockchain')
