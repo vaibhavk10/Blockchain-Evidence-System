@@ -3,30 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <title>Blockchain Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+            display: block;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        td {
+            word-wrap: break-word;
+            max-width: 200px;
+        }
+        .hash-cell {
+            word-break: break-all;
+        }
+    </style>
 </head>
 <body>
-    <h1>Blockchain Viewer</h1>
-    <table border="1">
-        <tr>
-            <th>Timestamp</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>UID</th>
-            <th>Evidence</th>
-            <th>Hash</th>
-            <th>Previous Hash</th>
-        </tr>
-        {% for record in blockchain %}
-        <tr>
-            <td>{{ record.timestamp }}</td>
-            <td>{{ record.name }}</td>
-            <td>{{ record.age }}</td>
-            <td>{{ record.uid }}</td>
-            <td>{{ record.evidence }}</td>
-            <td>{{ record.hash }}</td>
-            <td>{{ record.previous_hash }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="container">
+        <h1>Blockchain Viewer</h1>
+        <table>
+            <tr>
+                <th>Timestamp</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>UID</th>
+                <th>Evidence</th>
+                <th>Hash</th>
+                <th>Previous Hash</th>
+            </tr>
+            {% for record in blockchain %}
+            <tr>
+                <td>{{ record.timestamp }}</td>
+                <td>{{ record.name }}</td>
+                <td>{{ record.age }}</td>
+                <td>{{ record.uid }}</td>
+                <td>{{ record.evidence }}</td>
+                <td class="hash-cell">{{ record.hash }}</td>
+                <td class="hash-cell">{{ record.previous_hash }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
