@@ -1,67 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Evidence Record</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="header-icon">🔍</div>
-            <h1>Add Evidence Record</h1>
-        </div>
-        <p>Please fill out the form below to add evidence to the blockchain securely.</p>
-        
-        <!-- Form to add new evidence -->
-        <form action="/add_record" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter name">
-            
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" placeholder="Enter age">
-            
-            <label for="evidence">Evidence:</label>
-            <textarea id="evidence" name="evidence" placeholder="Describe the evidence here..."></textarea>
-            
-            <label for="uid">UID:</label>
-            <input type="text" id="uid" name="uid" placeholder="Enter UID">
-            
-            <button type="submit" class="btn">Add Record</button>
-        </form>
-
-        <!-- Form to search for evidence by UID -->
-        <h2>Find Previous Evidence</h2>
-        <form action="/search_record" method="post">
-            <label for="search_uid">Search by UID:</label>
-            <input type="text" id="search_uid" name="search_uid" placeholder="Enter UID to search">
-            <button type="submit" class="btn">Find Record</button>
-        </form>
-
-        <!-- Display search result if a record is found -->
-        {% if record %}
-        <div class="search-result">
-            <h3>Search Result:</h3>
-            <p><strong>Timestamp:</strong> {{ record.timestamp }}</p>
-            <p><strong>Name:</strong> {{ record.name }}</p>
-            <p><strong>Age:</strong> {{ record.age }}</p>
-            <p><strong>UID:</strong> {{ record.uid }}</p>
-            <p><strong>Evidence:</strong> {{ record.evidence }}</p>
-            <p><strong>Hash:</strong> {{ record.hash }}</p>
-            <p><strong>Previous Hash:</strong> {{ record.previous_hash }}</p>
-        </div>
-        {% endif %}
-
-        <!-- Flash message for no record found -->
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
-            <div class="flash-message">
-              {% for message in messages %}
-                <p>{{ message }}</p>
-              {% endfor %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Add Evidence Record</title>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="header-icon">🔍</div>
+                <h1>Add Evidence Record</h1>
             </div>
-          {% endif %}
-        {% endwith %}
-    </div>
-</body>
-</html>
+            <p>Please fill out the form below to add evidence to the blockchain securely.</p>
+            
+            <!-- Form to add new evidence -->
+            <form action="/add_record" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter name">
+                
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" placeholder="Enter age">
+                
+                <label for="evidence">Evidence:</label>
+                <textarea id="evidence" name="evidence" placeholder="Describe the evidence here..."></textarea>
+                
+                <label for="uid">UID:</label>
+                <input type="text" id="uid" name="uid" placeholder="Enter UID">
+                
+                <button type="submit" class="btn">Add Record</button>
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="/view_blockchain" class="btn" style="background-color: #28a745; color: white; text-decoration: none;">View All Records</a>
+                </div>
+            </form>
+
+            <!-- Form to search for evidence by UID -->
+            <h2>Find Previous Evidence</h2>
+            <form action="/search_record" method="post">
+                <label for="search_uid">Search by UID:</label>
+                <input type="text" id="search_uid" name="search_uid" placeholder="Enter UID to search">
+                <button type="submit" class="btn">Find Record</button>
+
+            
+            </form>
+
+            <!-- Display search result if a record is found -->
+            {% if record %}
+            <div class="search-result">
+                <h3>Search Result:</h3>
+                <p><strong>Timestamp:</strong> {{ record.timestamp }}</p>
+                <p><strong>Name:</strong> {{ record.name }}</p>
+                <p><strong>Age:</strong> {{ record.age }}</p>
+                <p><strong>UID:</strong> {{ record.uid }}</p>
+                <p><strong>Evidence:</strong> {{ record.evidence }}</p>
+                <p><strong>Hash:</strong> {{ record.hash }}</p>
+                <p><strong>Previous Hash:</strong> {{ record.previous_hash }}</p>
+            </div>
+            {% endif %}
+
+            <!-- Flash message for no record found -->
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash-message">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+                </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+    </body>
+    </html>
