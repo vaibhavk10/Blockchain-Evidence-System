@@ -7,10 +7,10 @@
   <h1>Blockchain Evidence Management System</h1>
   <p>A decentralized application that securely stores evidence records on a blockchain. This application enables users to add new records, search for existing records by UID, and view all records in the blockchain. Built with Flask for the backend, it leverages blockchain technology to ensure data integrity and security.</p>
 
-  <h2>🌐 Live Demo</h2>
-  <div align="center">
-    <a href="https://blockchain-evidence-system.glitch.me" target="_blank" style="display: inline-block; padding: 12px 24px; margin: 10px; border-radius: 8px; background-color: #6a0dad; color: white; font-weight: bold; text-decoration: none; font-size: 1.1em;">Run on Glitch</a>
-  </div>
+  ## 🌐 Live Demo
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-purple?style=for-the-badge&logo=glitch&logoColor=white)](https://blockchain-evidence-system.glitch.me)
+
 
   <h2>🚀 Features</h2>
   <ul>
