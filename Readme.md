@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Blockchain Evidence Management System</title>
 </head>
 <body>
   <h1>Blockchain Evidence Management System</h1>
   <p>A decentralized application that securely stores evidence records on a blockchain. This application enables users to add new records, search for existing records by UID, and view all records in the blockchain. Built with Flask for the backend, it leverages blockchain technology to ensure data integrity and security.</p>
 
   <h2>🌐 Live Demo</h2>
-  <p align="center">
-    <a href="https://blockchain-evidence-system.glitch.me" target="_blank" style="display: inline-block; padding: 10px 20px; margin: 5px; border-radius: 5px; background-color: purple; color: white; text-decoration: none;">Run on Glitch</a>
-  </p>
+  <div align="center">
+    <a href="https://blockchain-evidence-system.glitch.me" target="_blank" style="display: inline-block; padding: 12px 24px; margin: 10px; border-radius: 8px; background-color: #6a0dad; color: white; font-weight: bold; text-decoration: none; font-size: 1.1em;">Run on Glitch</a>
+  </div>
 
   <h2>🚀 Features</h2>
   <ul>
@@ -33,7 +32,7 @@
   <h3>Installation</h3>
   <ol>
     <li><strong>Clone the repository</strong>:
-      <pre><code>git clone https://github.com/yourusername/blockchain-evidence-system.git
+      <pre><code>git clone https://github.com/vaibhavk10/Blockchain-Evidence-System.git
 cd blockchain-evidence-system</code></pre>
     </li>
     <li><strong>Install Dependencies</strong>:
