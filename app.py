@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from hashlib import sha256
 from datetime import datetime
 
@@ -39,7 +39,14 @@ def add_record():
     new_record = PatientRecord(name, uid, age, evidence)
     blockchain.append(new_record)
 
-    return f"Record added to blockchain successfully. Your User ID: {uid}"
+    return redirect(url_for('view_blockchain'))
+
+# Route to delete a record by UID
+@app.route('/delete_record/<uid>', methods=['POST'])
+def delete_record(uid):
+    global blockchain
+    blockchain = [record for record in blockchain if record.uid != uid]
+    return redirect(url_for('view_blockchain'))
 
 # Route to view blockchain
 @app.route('/view_blockchain')
