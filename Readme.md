@@ -1,11 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-</head>
-<body>
-  <h1>Blockchain Evidence Management System</h1>
-  <p>A decentralized application that securely stores evidence records on a blockchain. This application enables users to add new records, search for existing records by UID, and view all records in the blockchain. Built with Flask for the backend, it leverages blockchain technology to ensure data integrity and security.</p>
+<h1 align="center">🛠️ Blockchain Evidence Management System 🛠️</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/Flask-1.1.2-green.svg" alt="Flask">
+  <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+</p>
+
+<p align="center">
+  A simple blockchain-based evidence management system to add, view, and delete records in a simulated blockchain.
+</p>
+
+---
 
   ## 🌐 Live Demo
 
