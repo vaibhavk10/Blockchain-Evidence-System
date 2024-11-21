@@ -32,15 +32,32 @@ class PatientRecord:
 # Route to add new record to blockchain
 @app.route('/add_record', methods=['POST'])
 def add_record():
-    name = request.form['name']
-    age = request.form['age']
-    evidence = request.form['evidence']
-    uid = request.form['uid']
+    name = request.form['name'].strip()
+    age = request.form['age'].strip()
+    evidence = request.form['evidence'].strip()
+    uid = request.form['uid'].strip()
+
+    # Validate all fields are filled
+    if not all([name, age, evidence, uid]):
+        flash("All fields are required!")
+        return redirect(url_for('index'))
+    
+    # Validate age is a positive number
+    try:
+        age_num = int(age)
+        if age_num <= 0:
+            flash("Age must be a positive number!")
+            return redirect(url_for('index'))
+    except ValueError:
+        flash("Age must be a valid number!")
+        return redirect(url_for('index'))
 
     new_record = PatientRecord(name, uid, age, evidence)
     blockchain.append(new_record)
 
-    return redirect(url_for('view_blockchain'))
+        # Flash success message instead of redirecting
+    flash("Record added successfully!", "success")
+    return redirect(url_for('index'))
 
 # Route to delete a record by UID
 @app.route('/delete_record/<uid>', methods=['POST'])

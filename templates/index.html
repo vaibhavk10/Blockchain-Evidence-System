@@ -4,8 +4,15 @@
         <meta charset="UTF-8">
         <title>Add Evidence Record</title>
         <link rel="stylesheet" href="/static/style.css">
+        <link rel="stylesheet" href="/static/background.css">
+        <script src="/static/background.js" defer></script>
     </head>
     <body>
+        <div class="blockchain-background">
+            <div class="grid"></div>
+            <div class="nodes"></div>
+        </div>
+        
         <div class="container">
             <div class="header">
                 <div class="header-icon">🔍</div>
@@ -16,16 +23,16 @@
             <!-- Form to add new evidence -->
             <form action="/add_record" method="post">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter name">
+                <input type="text" id="name" name="name" placeholder="Enter name" required>
                 
                 <label for="age">Age:</label>
-                <input type="number" id="age" name="age" placeholder="Enter age">
+                <input type="number" id="age" name="age" placeholder="Enter age" required>
                 
                 <label for="evidence">Evidence:</label>
-                <textarea id="evidence" name="evidence" placeholder="Describe the evidence here..."></textarea>
+                <textarea id="evidence" name="evidence" placeholder="Describe the evidence here..." required></textarea>
                 
                 <label for="uid">UID:</label>
-                <input type="text" id="uid" name="uid" placeholder="Enter UID">
+                <input type="text" id="uid" name="uid" placeholder="Enter UID" required>
                 
                 <button type="submit" class="btn">Add Record</button>
                 <div style="margin-top: 20px; text-align: center;">
@@ -58,15 +65,15 @@
             {% endif %}
 
             <!-- Flash message for no record found -->
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <div class="flash-message">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-                </div>
-            {% endif %}
-            {% endwith %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                <p>{{ message }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
         </div>
     </body>
     </html>
